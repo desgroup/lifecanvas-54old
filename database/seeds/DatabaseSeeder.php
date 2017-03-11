@@ -10,6 +10,9 @@ class DatabaseSeeder extends Seeder
      */
     private $tables = [
         'users',
+        'bytes',
+        'places',
+        'timezones'
     ];
 
     /**
@@ -22,10 +25,14 @@ class DatabaseSeeder extends Seeder
         $this->truncateDatabase();
 
         $this->call(UsersTableSeeder::class);
+        $this->call(BytesTableSeeder::class);
+        $this->call(PlacesTableSeeder::class);
+        $this->call(TimezonesTableSeeder::class);
+        $this->call(CountriesTableSeeder::class);
     }
 
     /**
-     * Clears the database before seeding.
+     * Truncates the database tables.
      */
     private function truncateDatabase()
     {
