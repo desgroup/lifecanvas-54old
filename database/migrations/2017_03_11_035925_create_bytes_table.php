@@ -15,9 +15,9 @@ class CreateBytesTable extends Migration
     {
         Schema::create('bytes', function (Blueprint $table) {
             $table->increments('id');
-            // mandatory title for the byte
+            // Mandatory title for the byte
             $table->string('name');
-            // optional free text to elaborate on the byte
+            // Optional free text to elaborate on the byte
             $table->text('story')->nullable();
             // 5 star rating
             $table->tinyInteger('rating')->nullable();
@@ -27,21 +27,21 @@ class CreateBytesTable extends Migration
             $table->tinyInteger('privacy')->default('0');
             // not sure what this is either -> TODO-KGW clean up time_perspective field
             //$table->tinyInteger('time_perspective')->nullable();
-            // the date the byte happened in UTC, can be empty
+            // The date the byte happened in UTC, can be empty
             $table->dateTime('byte_date')->nullable();
-            // a code that indicates what part of the date you are sure of
-            $table->string('accuracy')->nullable();
-            // the timezone id for the byte_date that provides the UTC offset
+            // The timezone id for the byte_date that provides the UTC offset
             $table->integer('timezone_id')->nullable()->unsigned();
+            // A code that indicates what part of the date you are sure of
+            $table->string('accuracy')->nullable();
             // The latitude where the byte was captured from the device, can be Null
             $table->double('lat')->nullable();
             // The longitude where the byte was captured from the device, can be Null
             $table->double('lng')->nullable();
-            // the id for the record in the image table
+            // The id for the record in the image table
             $table->integer('image_id')->nullable()->unsigned();
-            // the id for the record for the place associated with the byte
+            // The id for the record for the place associated with the byte
             $table->integer('place_id')->nullable()->unsigned();
-            // the user id for the user that created the byte
+            // The user id for the user that created the byte
             $table->integer('user_id')->unsigned();
             $table->timestamps();
         });

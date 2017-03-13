@@ -12,7 +12,11 @@ class DatabaseSeeder extends Seeder
         'users',
         'bytes',
         'places',
-        'timezones'
+        'timezones',
+        'countries',
+        'lines',
+        //'assets',
+        'people'
     ];
 
     /**
@@ -29,6 +33,9 @@ class DatabaseSeeder extends Seeder
         $this->call(PlacesTableSeeder::class);
         $this->call(TimezonesTableSeeder::class);
         $this->call(CountriesTableSeeder::class);
+        $this->call(LinesTableSeeder::class);
+        //$this->call(AssetsTableSeeder::class);
+        $this->call(PeopleTableSeeder::class);
     }
 
     /**
