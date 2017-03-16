@@ -25,6 +25,8 @@ class CreatePlacesTable extends Migration
             $table->string('province')->nullable();
             // The ISO country code for the place's country, can be Null
             $table->string('country_code')->nullable();
+            // The ISO country code for the place's country, can be Null
+            $table->boolean('extant')->default(true);
             // The official web site URL for the place, can be Null - TODO-KGW should we keep this?
             $table->string('url_place')->nullable();
             // The URL for the place's associated wikipedia page, can be Null

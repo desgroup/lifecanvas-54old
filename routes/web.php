@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('/byte/{byte}', 'ByteController@show');
+
 Route::get('/', function () {
     return view('welcome');
 });

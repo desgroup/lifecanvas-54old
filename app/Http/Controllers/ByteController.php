@@ -14,7 +14,7 @@ class ByteController extends Controller
      */
     public function index()
     {
-        //
+        return 'Hello World';
     }
 
     /**
@@ -46,7 +46,7 @@ class ByteController extends Controller
      */
     public function show(Byte $byte)
     {
-        //
+        return $byte;
     }
 
     /**
