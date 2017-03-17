@@ -22,7 +22,7 @@ class ApiByteController extends ApiController
     {
         $this->byteTransformer = $byteTransformer;
 
-        //$this->middleware('auth.basic', ['only' => 'store']);
+        $this->middleware('auth.basic', ['only' => 'store']);
     }
 
     /**
