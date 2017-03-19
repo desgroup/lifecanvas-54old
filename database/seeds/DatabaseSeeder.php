@@ -8,16 +8,34 @@ class DatabaseSeeder extends Seeder
      * List of tables impacted by the seeder. These will be truncated first.
      * @var array
      */
-    private $tables = [
-        'users',
-        'bytes',
-        'places',
-        'timezones',
-        'countries',
-        'lines',
-        //'assets',
-        'people'
-    ];
+    private $tables;
+
+    /**
+     * DatabaseSeeder constructor.
+     * @param ByteTransformer $byteTransformer
+     * @internal param ByteTransformer $lessonTransformer
+     */
+    function __construct()
+    {
+        $this->tables = [
+            'timezones',
+            'countries'
+        ];
+
+        if(getenv('APP_ENV') == "local")
+        {
+            array_push($this->tables,
+                'users',
+                'bytes',
+                'places',
+                'lines',
+                'people',
+                'byte_person',
+                'byte_line'
+                //'assets'
+            );
+        }
+    }
 
     /**
      * Run the database seeds.
@@ -28,14 +46,19 @@ class DatabaseSeeder extends Seeder
     {
         $this->truncateDatabase();
 
-        $this->call(UsersTableSeeder::class);
-        $this->call(BytesTableSeeder::class);
-        $this->call(PlacesTableSeeder::class);
         $this->call(TimezonesTableSeeder::class);
         $this->call(CountriesTableSeeder::class);
-        $this->call(LinesTableSeeder::class);
-        //$this->call(AssetsTableSeeder::class);
-        $this->call(PeopleTableSeeder::class);
+
+        if(getenv('APP_ENV') == "local") {
+            $this->call(UsersTableSeeder::class);
+            $this->call(BytesTableSeeder::class);
+            $this->call(PlacesTableSeeder::class);
+            $this->call(LinesTableSeeder::class);
+            $this->call(PeopleTableSeeder::class);
+            $this->call(ByteLineSeeder::class);
+            $this->call(BytePeopleSeeder::class);
+            //$this->call(AssetsTableSeeder::class);
+        }
     }
 
     /**

@@ -11,7 +11,6 @@ namespace App\Lifecanvas\Utilities;
 
 class FuzzyDate
 {
-
     private $values = array();
     private $datetime;
     private $accuracy;
@@ -20,19 +19,14 @@ class FuzzyDate
     {
         // Check year
         $this->values["year"] = (substr($accuracy, 0, 1) == 1 ? date('Y', strtotime($currentDate)) : "");
-
         // Check month
         $this->values["month"] = (substr($accuracy, 1, 1) == 1 ? date('n', strtotime($currentDate)) : "");
-
         // Check day
         $this->values["day"] = (substr($accuracy, 2, 1) == 1 ? date('j', strtotime($currentDate)) : "");
-
         // Check hour
         $this->values["hour"] = (substr($accuracy, 3, 1) == 1 ? date('G', strtotime($currentDate)) : "");
-
         // Check minute
         $this->values["minute"] = (substr($accuracy, 4, 1) == 1 ? date('i', strtotime($currentDate)) : "");
-
         // Check seconds
         $this->values["second"] = (substr($accuracy, 5, 1) == 1 ? date('s', strtotime($currentDate)) : "");
 

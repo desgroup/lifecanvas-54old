@@ -37,8 +37,6 @@ class CreatePlacesTable extends Migration
             $table->double('lng')->nullable();
             // The chosen zoom level for the map, can be Null
             $table->tinyInteger('map_zoom')->nullable();
-            // This should be retired - TODO-KGW confirm deletion
-            //$table->string('filename')->nullable();
             // The id for the image record associated with this place, can be Null
             $table->integer('image_id')->nullable()->unsigned();
             // Timezone for the place, can be Null

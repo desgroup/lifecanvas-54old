@@ -14,9 +14,9 @@ class ApiByteController extends ApiController
     protected $byteTransformer;
 
     /**
-     * LessonsController constructor.
+     * ApiByteController constructor.
      * @param ByteTransformer $byteTransformer
-     * @internal param ByteTransformer $lessonTransformer
+     * @internal param ByteTransformer $byteTransformer
      */
     function __construct(ByteTransformer $byteTransformer)
     {
@@ -28,11 +28,13 @@ class ApiByteController extends ApiController
     /**
      * Returns json containing a list of bytes found.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
-        $bytes = Byte::all();
+        $bytes = Byte::with('place', 'timezone', 'lines', 'people')->get();
+        //$bytes = $bytes->toArray();
+        //dd($bytes[0]['lines'][0]['name']);
 
         if (! $bytes) {
             return $this->responseNotFound('No bytes found.');
@@ -57,7 +59,7 @@ class ApiByteController extends ApiController
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -76,7 +78,7 @@ class ApiByteController extends ApiController
      * Return json containing the found byte.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show(Byte $byte)
     {

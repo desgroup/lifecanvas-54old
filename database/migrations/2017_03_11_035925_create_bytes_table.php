@@ -21,12 +21,8 @@ class CreateBytesTable extends Migration
             $table->text('story')->nullable();
             // 5 star rating
             $table->tinyInteger('rating')->nullable();
-            // not sure what this was supposed to be -> TODO-KGW clean up type field
-            //$table->tinyInteger('type')->default('0');
             // privacy setting for the byte: 0 is private, 1 is friends, 2 is world
             $table->tinyInteger('privacy')->default('0');
-            // not sure what this is either -> TODO-KGW clean up time_perspective field
-            //$table->tinyInteger('time_perspective')->nullable();
             // The date the byte happened in UTC, can be empty
             $table->dateTime('byte_date')->nullable();
             // The timezone id for the byte_date that provides the UTC offset

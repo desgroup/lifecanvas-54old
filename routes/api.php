@@ -18,8 +18,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['prefix' => 'v1'], function(){
+    Route::post('/test', 'iPhoneController@login');
+    Route::get('byte/{$id}/lines', 'ApiLineController@index');
     Route::resource('byte', 'ApiByteController');
+    Route::resource('line', 'ApiLineController', ['only' => ['index', 'show']]);
     //Route::get('lessons/{id}/tags', 'TagsController@lessonTags');
     //Route::resource('tags', 'TagsController');
-    //Route::post('/test', 'iPhoneController@login');
 });

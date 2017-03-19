@@ -23,6 +23,16 @@ class CreateLinesTable extends Migration
             $table->integer('user_id');
             $table->timestamps();
         });
+
+        Schema::create('byte_line', function (Blueprint $table) {
+            $table->integer('byte_id')->unsigned()->index();
+            $table->foreign('byte_id')->references('id')->on('bytes')->onDelete('cascade');
+
+            $table->integer('line_id')->unsigned()->index();
+            $table->foreign('line_id')->references('id')->on('lines')->onDelete('cascade');
+
+            $table->timestamps();
+        });
     }
 
     /**
@@ -32,6 +42,7 @@ class CreateLinesTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('byte_line');
         Schema::dropIfExists('lines');
     }
 }

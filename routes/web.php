@@ -11,12 +11,17 @@
 |
 */
 
+/*
+ * Pages accessible without logging in
+ */
+Auth::routes();
+Route::get('/', ['as' => 'splash', 'uses' => 'PagesController@splash']);
+
 Route::get('/byte/{byte}', 'ByteController@show');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Auth::routes();
 
 Route::get('/home', 'HomeController@index');
